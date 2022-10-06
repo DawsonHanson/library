@@ -1,1 +1,2 @@
 # library
+This repository will feature the "Library" project from "The Odin Project". The goal is to create a small library app using Objects that can: add/ subtract a book and change its read status. 
