@@ -1,5 +1,13 @@
 console.log('Test!')
 
+function openForm() {
+  document.getElementById('form').style.display = 'grid'
+}
+
+function closeForm() {
+  document.getElementById('form').style.display = 'none'
+}
+
 let library = [];
 
 function Book (title, author, pages, read) {
