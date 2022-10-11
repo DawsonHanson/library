@@ -9,14 +9,32 @@ function closeForm() {
 }
 
 let library = [];
+//
+console.log(library)
+//
 
-function Book (title, author, pages, read) {
+function Book (title, author, pages) {
   this.title = title
   this.author = author
   this.pages = pages
-  this.read = read
+  // this.read = read (for checkbox)
 }
 
-function addBookToLibrary() {
+let form = document.getElementById('bookForm'); 
 
+function addBookToLibrary(event) {
+  event.preventDefault();
+
+  let title = document.getElementById('title').value
+  let author = document.getElementById('author').value
+  let pages = document.getElementById('pages').value
+  
+  let newBook = new Book(title, author, pages)
+  
+  library.push(newBook)
+  //
+  console.log(newBook)
+  console.log(library)
+  //
 }
+form.addEventListener('submit', addBookToLibrary)
