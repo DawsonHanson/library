@@ -50,7 +50,20 @@ label {
 
 .book {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   min-width: 250px;
   background-color: yellow;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.button-remove {
+  
+}
+
+.button-status {
+  
 }

@@ -1,14 +1,7 @@
 console.log('Test!')
 
-function openForm() {
-  document.getElementById('form').style.display = 'grid'
-}
-
-function closeForm() {
-  document.getElementById('form').style.display = 'none'
-}
-
 let library = [];
+
 //
 console.log(library)
 //
@@ -19,6 +12,17 @@ function Book (title, author, pages, completed) {
   this.pages = pages
   this.completed = completed
 } 
+
+function openForm() {
+  document.getElementById('form').style.display = 'grid'
+}
+
+function closeForm() {
+  document.getElementById('form').style.display = 'none'
+}
+
+const form = document.getElementById('bookForm');
+form.addEventListener('submit', addBookToLibrary)
 
 function addBookToLibrary(event) {
   event.preventDefault();
@@ -37,26 +41,36 @@ function addBookToLibrary(event) {
   console.log(library)
   //
 
-  //
-  addLibraryToShelf(library)
-  //
+  addBookToShelf(newBook)
 }
 
-const form = document.getElementById('bookForm');
-form.addEventListener('submit', addBookToLibrary)
+function addBookToShelf(book) {
 
-function addLibraryToShelf (array) {
   const bookShelf = document.querySelector('.book-shelf')
   const addBook = document.createElement('div')
-  const addBookInfo = document.createElement('p')
-
-  array.forEach(function (bookElement) {
-    console.log(bookElement.title)
-    console.log(bookElement.author)
-    console.log(bookElement.pages)
-    console.log(bookElement.completed)
-    })
+  
+    for (let key in book) {
+      //
+      console.log(`${key}: ${book[key]}`)
+      //
+      addBook.innerHTML += '<p>' + (`${key}: ${book[key]}`) + '</p>'
+    }
 
     addBook.classList.add('book')
+    addButtons(addBook)
     bookShelf.appendChild(addBook)
-  }
+}
+
+const addButtons = function (addBook) {
+  const addButtonContainer = document.createElement('div')
+  const addButton1 = document.createElement('button')
+  const addButton2 = document.createElement('button')
+  addButtonContainer.classList.add('button-container')
+  addButton1.textContent = 'Remove'
+  addButton2.textContent = 'Status'
+  addButton1.classList.add('button-remove')
+  addButton2.classList.add('button-status')
+  addButtonContainer.appendChild(addButton1)
+  addButtonContainer.appendChild(addButton2)
+  addBook.appendChild(addButtonContainer)
+}
