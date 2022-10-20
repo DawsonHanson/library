@@ -60,10 +60,10 @@ label {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.button-remove {
-  
+#button-remove {
+  color: blueviolet;
 }
 
-.button-status {
-  
+#button-status {
+  color: green;
 }

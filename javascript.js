@@ -2,10 +2,6 @@ console.log('Test!')
 
 let library = [];
 
-//
-console.log(library)
-//
-
 function Book (title, author, pages, completed) {
   this.title = title
   this.author = author
@@ -59,6 +55,18 @@ function addBookToShelf(book) {
     addBook.classList.add('book')
     addButtons(addBook)
     bookShelf.appendChild(addBook)
+    setDataAttribute()
+}
+
+function setDataAttribute() {
+  const books = document.querySelectorAll('.book')
+    books.forEach((book, index) => {
+      book.setAttribute('num', index)
+    })
+
+  //
+  books.forEach(book => console.log(book.getAttribute('num')))
+  //
 }
 
 const addButtons = function (addBook) {
@@ -68,9 +76,37 @@ const addButtons = function (addBook) {
   addButtonContainer.classList.add('button-container')
   addButton1.textContent = 'Remove'
   addButton2.textContent = 'Status'
-  addButton1.classList.add('button-remove')
-  addButton2.classList.add('button-status')
+  addButton1.setAttribute('id','button-remove')
+  addButton2.setAttribute('id','button-status')
   addButtonContainer.appendChild(addButton1)
   addButtonContainer.appendChild(addButton2)
   addBook.appendChild(addButtonContainer)
 }
+
+document.addEventListener('click', function(event) {
+  if (event.target && event.target.id== 'button-remove') {
+
+    // removing book from dom and library array
+    let currentBook = event.target.parentElement.parentElement
+    currentBook.remove()
+    let numOfCurrentBook = currentBook.getAttribute('num')
+    
+    library.splice(numOfCurrentBook, 1)
+    //
+
+    //
+    console.log(library)
+    console.log(currentBook.getAttribute('num'))
+    //
+
+    // needed to reset attributes as wont work if removing multiple books
+    // without adding another first
+    setDataAttribute()
+  }
+}) 
+
+document.addEventListener('click', function(event) {
+  if (event.target && event.target.id== 'button-status') {
+    alert('status')
+  }
+}) 
