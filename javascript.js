@@ -107,6 +107,27 @@ document.addEventListener('click', function(event) {
 
 document.addEventListener('click', function(event) {
   if (event.target && event.target.id== 'button-status') {
-    alert('status')
+
+    let currentBook = event.target.parentElement.parentElement
+    let numOfCurrentBook = currentBook.getAttribute('num')
+    let currentBookObject = library.at(numOfCurrentBook)
+    let completedTextLine = event.target.parentElement.previousSibling
+    //
+    console.log(library)
+    console.log(currentBookObject.completed)
+    //
+
+    if (currentBookObject.completed == false) {
+      currentBookObject.completed = true
+      completedTextLine.textContent = 'completed: true'
+    } else {
+      currentBookObject.completed = false
+      completedTextLine.textContent = 'completed: false'
+    }
+
+  //
+  console.log(library)
+  console.log(currentBookObject.completed)
+  //
   }
 }) 
