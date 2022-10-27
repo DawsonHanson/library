@@ -3,10 +3,10 @@ console.log('Test!')
 let library = [];
 
 function Book (title, author, pages, completed) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.completed = completed
+  this.Title = title
+  this.Author = author
+  this.Pages = pages
+  this.Completed = completed
 } 
 
 function openForm() {
@@ -78,8 +78,8 @@ const addButtons = function (addBook) {
   addButton2.textContent = 'Status'
   addButton1.setAttribute('id','button-remove')
   addButton2.setAttribute('id','button-status')
-  addButtonContainer.appendChild(addButton1)
   addButtonContainer.appendChild(addButton2)
+  addButtonContainer.appendChild(addButton1)
   addBook.appendChild(addButtonContainer)
 }
 
@@ -117,17 +117,17 @@ document.addEventListener('click', function(event) {
     console.log(currentBookObject.completed)
     //
 
-    if (currentBookObject.completed == false) {
-      currentBookObject.completed = true
-      completedTextLine.textContent = 'completed: true'
+    if (currentBookObject.Completed == false) {
+      currentBookObject.Completed = true
+      completedTextLine.textContent = 'Completed: true'
     } else {
-      currentBookObject.completed = false
-      completedTextLine.textContent = 'completed: false'
+      currentBookObject.Completed = false
+      completedTextLine.textContent = 'Completed: false'
     }
 
   //
   console.log(library)
-  console.log(currentBookObject.completed)
+  console.log(currentBookObject.Completed)
   //
   }
 }) 
