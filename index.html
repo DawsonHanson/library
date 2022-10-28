@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <button class="open-form-button" onclick="openForm()">Add A Book!</button>
+  <button class="open-form-button">Add A Book!</button>
 
   <div class="title">
     <h1>My</h1>
@@ -23,17 +23,17 @@
 
       <div class="form-field-container">
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" placeholder="Grey Man" required>
+      <input type="text" id="title" name="title" placeholder="Grey Man" maxlength="21" required>
       </div>
 
       <div class="form-field-container">
       <label for="author">Author</label>
-      <input type="text" id="author" name="author" placeholder="Joe Bloggins" required>
+      <input type="text" id="author" name="author" placeholder="Joe Bloggins" maxlength="19" required>
       </div>
 
       <div class="form-field-container">
       <label for="pages">#Pages</label>
-      <input type="number" id="pages" name="pages" placeholder="256" required>
+      <input type="number" id="pages" name="pages" placeholder="256" max="9999999999999999999" required>
       </div>
 
       <div class="form-checkbox-container">
@@ -43,7 +43,7 @@
 
       <div class="form-button-container">
       <button type="submit">Add Book!</button>
-      <button type="button" class="close-form-button" onclick="closeForm()">Cancel</button>
+      <button type="button" class="close-form-button">Cancel</button>
       </div>
 
     </form>

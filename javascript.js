@@ -1,5 +1,3 @@
-console.log('Test!')
-
 let library = [];
 
 function Book (title, author, pages, completed) {
@@ -9,13 +7,15 @@ function Book (title, author, pages, completed) {
   this.Completed = completed
 } 
 
-function openForm() {
+let openFormButton = document.querySelector('.open-form-button')
+openFormButton.addEventListener('click', () => {
   document.getElementById('form').style.display = 'grid'
-}
+})
 
-function closeForm() {
+let closeFormButton = document.querySelector('.close-form-button')
+closeFormButton.addEventListener('click', () => {
   document.getElementById('form').style.display = 'none'
-}
+})
 
 const form = document.getElementById('bookForm');
 form.addEventListener('submit', addBookToLibrary)
@@ -32,11 +32,6 @@ function addBookToLibrary(event) {
   
   library.push(newBook)
 
-  //
-  console.log(newBook)
-  console.log(library)
-  //
-
   addBookToShelf(newBook)
 }
 
@@ -46,9 +41,6 @@ function addBookToShelf(book) {
   const addBook = document.createElement('div')
   
     for (let key in book) {
-      //
-      console.log(`${key}: ${book[key]}`)
-      //
       addBook.innerHTML += '<p>' + (`${key}: ${book[key]}`) + '</p>'
     }
 
@@ -63,10 +55,6 @@ function setDataAttribute() {
     books.forEach((book, index) => {
       book.setAttribute('num', index)
     })
-
-  //
-  books.forEach(book => console.log(book.getAttribute('num')))
-  //
 }
 
 const addButtons = function (addBook) {
@@ -94,11 +82,6 @@ document.addEventListener('click', function(event) {
     library.splice(numOfCurrentBook, 1)
     //
 
-    //
-    console.log(library)
-    console.log(currentBook.getAttribute('num'))
-    //
-
     // needed to reset attributes as wont work if removing multiple books
     // without adding another first
     setDataAttribute()
@@ -112,10 +95,6 @@ document.addEventListener('click', function(event) {
     let numOfCurrentBook = currentBook.getAttribute('num')
     let currentBookObject = library.at(numOfCurrentBook)
     let completedTextLine = event.target.parentElement.previousSibling
-    //
-    console.log(library)
-    console.log(currentBookObject.completed)
-    //
 
     if (currentBookObject.Completed == false) {
       currentBookObject.Completed = true
@@ -124,10 +103,5 @@ document.addEventListener('click', function(event) {
       currentBookObject.Completed = false
       completedTextLine.textContent = 'Completed: false'
     }
-
-  //
-  console.log(library)
-  console.log(currentBookObject.Completed)
-  //
   }
 }) 
