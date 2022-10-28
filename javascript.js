@@ -7,12 +7,12 @@ function Book (title, author, pages, completed) {
   this.Completed = completed
 } 
 
-let openFormButton = document.querySelector('.open-form-button')
+const openFormButton = document.querySelector('.open-form-button')
 openFormButton.addEventListener('click', () => {
   document.getElementById('form').style.display = 'grid'
 })
 
-let closeFormButton = document.querySelector('.close-form-button')
+const closeFormButton = document.querySelector('.close-form-button')
 closeFormButton.addEventListener('click', () => {
   document.getElementById('form').style.display = 'none'
 })
@@ -73,17 +73,12 @@ const addButtons = function (addBook) {
 
 document.addEventListener('click', function(event) {
   if (event.target && event.target.id== 'button-remove') {
-
-    // removing book from dom and library array
     let currentBook = event.target.parentElement.parentElement
     currentBook.remove()
     let numOfCurrentBook = currentBook.getAttribute('num')
     
     library.splice(numOfCurrentBook, 1)
-    //
 
-    // needed to reset attributes as wont work if removing multiple books
-    // without adding another first
     setDataAttribute()
   }
 }) 
